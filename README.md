@@ -37,7 +37,7 @@ Project Manager:
 
 API Build Contributors:
   - Helana Nosrat
-  - Mirian Rozenbaum
+  - Miriam Rozenbaum
   - Max Baldridge
   - Angela Lee
   - Justin Short
