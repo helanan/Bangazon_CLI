@@ -27,5 +27,5 @@ class TestCustomerMethods(unittest.TestCase):
         create_customer(customer)
         customer_id = get_customer_id
         active_customer = activate_customer(customer_id)
-        active_customer = 1
+        # active_customer = 1
         self.assertIsNotNone(active_customer)
