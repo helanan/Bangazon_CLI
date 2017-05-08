@@ -1,15 +1,25 @@
 import unittest
-import sys
-sys.path.append("../")
-from models.Customer import Customer
 
 
 class TestCustomerMethods(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(self):
-        self.Helena = Customer("Helena Nosrat", "500 Interstate Blvd", "Nashville", "TN", 37299, 6162124444,)
+    def test_create_customer(self):
+
+        customer = {
+            'name': 'Gil',
+            'address': '123 fleet st',
+            'phone' : 8085851414
+        }
 
 
-    def test_customer_is_instance(self):
-        self.assertIsInstance(self.Helena, Customer)
+        create_customer(customer)
+        customer_id = get_customer_id(customer['name'], customer['address'], customer['phone'])
+        self.assertIsNotNone(customer_id)
+
+
+    def test_activate_customer(self):
+        customer = {
+            'name': 'Gil',
+            'address': '123 fleet st',
+            'phone' : 8085851414
+        }
