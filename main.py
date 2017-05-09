@@ -39,10 +39,11 @@ class BangazonUser():
       first_name = input("Enter your first name")
       last_name = input("Enter youy last name")
       city = input("Enter your city")
-      customer_state = input("Enter the state you live in")
-      customer_zip_code = input("Enter your zip code")
-      customer_phone_number = input("Enter your phone number")
-      self.customer.create_user(first_name, last_name, city, customer_state, customer_zip_code, customer_phone_number, date_created)
+      state = input("Enter the state you live in")
+      zipcode = input("Enter your zip code")
+      phone = input("Enter your phone number")
+      active = false
+      self.create_customer(name, address, city, c_state, zipcode, phone, active)
 
     if choice == "2":
       customer_selection = input(self.customer.customer_list)
