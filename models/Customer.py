@@ -1,8 +1,5 @@
-def create_customer(name, address, phone_number):
-    pass
-
-def activate_customer(customer_id):
+def activate_customer(self):
     return 1
 
-def get_customer_id(name, address, phone_number):
+def get_customer_id(self):
     return 1
