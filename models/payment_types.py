@@ -1,5 +1,5 @@
-def create_payment_type(account_name, account_number, active_customer):
+def create_payment_type(self):
 	pass
 
-def get_payment_type(account_name, account_number, active_customer):
+def get_payment_type(payment_id):
 	return 2
