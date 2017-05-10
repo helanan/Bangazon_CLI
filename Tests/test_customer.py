@@ -82,6 +82,3 @@ class TestPaymentMethods(unittest.TestCase):
 
 
 
-
-
-

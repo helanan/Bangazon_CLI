@@ -10,3 +10,6 @@ def get_customer_payment_type(customer_id):
 
 def set_payment_type(payment_id):
 	pass
+
+
+	
