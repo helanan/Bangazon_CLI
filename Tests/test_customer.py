@@ -39,8 +39,7 @@ class TestPaymentMethods(unittest.TestCase):
 		self.assertIsNotNone(payment_id)
 
 	def test_get_all_payment_types_for_customer(self):
-
-        customer_id = get_customer_id()
+		customer_id = get_customer_id()
 
 		create_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], customer_id)
 		all_customer_payment_types = get_customer_payment_type(customer_id)
