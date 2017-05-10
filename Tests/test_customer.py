@@ -29,20 +29,45 @@ class TestPaymentMethods(unittest.TestCase):
 
 	def test_create_payment_type(self):
 
-		self.payment_type = {"account_name": "MasterCard", "account_number": "123456789098"}
 		create_customer(self.customer["name"], self.customer['address'], self.customer["city"], self.customer["c_state"], self.customer["zipcode"], self.customer["phone"])
 		customer_id = get_customer_id
-
 		self.assertIsNotNone(customer_id)
 
-		activate_customer(2)
-
+		activate_customer(1)
 		active_customer = activate_customer(self)
-
 		self.assertIsNotNone(active_customer)
 
 		create_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], active_customer)
-
-		payment_id = get_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], active_customer)
-
+		payment_id = get_payment_type(self.payment_type['account_name'], self.payment_type['account_number'])
 		self.assertIsNotNone(payment_id)
+
+	def test_get_all_payment_types_for_customer(self):
+		create_customer(self.customer["name"], self.customer['address'], self.customer["city"], self.customer["c_state"], self.customer["zipcode"], self.customer["phone"])
+		customer_id = get_customer_id
+
+		create_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], customer_id)
+		all_customer_payment_types = get_customer_payment_type(customer_id)
+		self.assertTrue(len(all_customer_payment_types) > 0)
+
+
+
+	def test_select_payment_type(self):
+		create_customer(self.customer["name"], self.customer['address'], self.customer["city"], self.customer["c_state"], self.customer["zipcode"], self.customer["phone"])
+		customer_id = get_customer_id
+		self.assertIsNotNone(customer_id)
+
+		activate_customer(1)
+		active_customer = activate_customer(self)
+		self.assertIsNotNone(active_customer)
+
+		create_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], active_customer)
+		payment_id = get_customer_payment_type(customer_id)
+		self.assertIsNotNone(payment_id)
+
+		customer_payment_types = get_customer_payment_type(active_customer)
+		self.assertIsNotNone(customer_payment_types)
+
+		selected_payment_type = set_payment_type(payment_id)
+
+
+
