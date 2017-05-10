@@ -1,4 +1,3 @@
-
 def create_payment_type(account_name, account_number, active_customer):
 	pass
 
@@ -10,6 +9,3 @@ def get_customer_payment_type(customer_id):
 
 def set_payment_type(payment_id):
 	pass
-
-
-	

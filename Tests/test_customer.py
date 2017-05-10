@@ -71,14 +71,3 @@ class TestPaymentMethods(unittest.TestCase):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
