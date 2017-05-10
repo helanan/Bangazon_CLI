@@ -1,6 +1,5 @@
 import unittest
 from models.Customer import *
-from models.Bangazon_Operator import *
 from models.payment_types import *
 
 class TestCustomerMethods(unittest.TestCase):
@@ -9,13 +8,13 @@ class TestCustomerMethods(unittest.TestCase):
     def test_create_customer(self):
         customer = create_customer("Jessica Jr", "500 Interstate Blvd S", "Nashville", "TN", "37209", "6155551234")
         # customer_id = get_customer_id(customer['name'], customer['address'], customer['phone'])
-        customer_id = get_customer_id
+        customer_id = get_customer_id()
         self.assertIsNotNone(customer_id)
 
 
     def test_activate_customer(self):
 
-        customer_id = get_customer_id
+        customer_id = get_customer_id()
         active_customer = activate_customer(customer_id)
         # active_customer = 1
         self.assertIsNotNone(active_customer)
@@ -29,12 +28,10 @@ class TestPaymentMethods(unittest.TestCase):
 
 	def test_create_payment_type(self):
 
-		create_customer(self.customer["name"], self.customer['address'], self.customer["city"], self.customer["c_state"], self.customer["zipcode"], self.customer["phone"])
-		customer_id = get_customer_id
+		customer_id = get_customer_id()
 		self.assertIsNotNone(customer_id)
 
-		activate_customer(1)
-		active_customer = activate_customer(self)
+		active_customer = activate_customer(customer_id)
 		self.assertIsNotNone(active_customer)
 
 		create_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], active_customer)
@@ -42,8 +39,7 @@ class TestPaymentMethods(unittest.TestCase):
 		self.assertIsNotNone(payment_id)
 
 	def test_get_all_payment_types_for_customer(self):
-		create_customer(self.customer["name"], self.customer['address'], self.customer["city"], self.customer["c_state"], self.customer["zipcode"], self.customer["phone"])
-		customer_id = get_customer_id
+		customer_id = get_customer_id()
 
 		create_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], customer_id)
 		all_customer_payment_types = get_customer_payment_type(customer_id)
@@ -52,12 +48,10 @@ class TestPaymentMethods(unittest.TestCase):
 
 
 	def test_select_payment_type(self):
-		create_customer(self.customer["name"], self.customer['address'], self.customer["city"], self.customer["c_state"], self.customer["zipcode"], self.customer["phone"])
-		customer_id = get_customer_id
+		customer_id = get_customer_id()
 		self.assertIsNotNone(customer_id)
 
-		activate_customer(1)
-		active_customer = activate_customer(self)
+		active_customer = activate_customer(customer_id)
 		self.assertIsNotNone(active_customer)
 
 		create_payment_type(self.payment_type['account_name'], self.payment_type['account_number'], active_customer)
@@ -68,6 +62,3 @@ class TestPaymentMethods(unittest.TestCase):
 		self.assertIsNotNone(customer_payment_types)
 
 		selected_payment_type = set_payment_type(payment_id)
-
-
-
