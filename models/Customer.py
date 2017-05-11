@@ -21,6 +21,8 @@ def create_customer(name, address, city, c_state, zipcode, phone):
             zipcode,
             phone
 
+        Author: Justin Short
+
     '''
 
     with sqlite3.connect('bangazonData.db') as conn:
@@ -34,13 +36,15 @@ def create_customer(name, address, city, c_state, zipcode, phone):
         zipcode = zipcode
         phone = phone
 
-        c.execute("""INSERT INTO Customers values (?, ?, ?, ?, ?, ?, ?, ?)""", (None ,name, address, city, c_state, zipcode, phone))
+        c.execute("""INSERT INTO Customers values (?, ?, ?, ?, ?, ?, ?)""", (None ,name, address, city, c_state, zipcode, phone))
 
         conn.commit()
 
 def get_all_customers():
 
     ''' This method will retrieve all customers that are stored in the Customers table of bangazonData.db
+
+        Author: Justin Short
     '''
 
     with sqlite3.connect('bangazonData.db') as conn:
@@ -67,6 +71,8 @@ def activate_customer(customer_id):
 
     Method Arguments:
         customer_id
+
+        Author: Justin Short
     '''
 
     with sqlite3.connect('bangazonData.db') as conn:
