@@ -3,6 +3,7 @@ from models.Customer import *
 from models.payment_types import *
 
 class TestCustomerMethods(unittest.TestCase):
+    """ Author: Justin Short """
 
 
     def test_create_customer(self):

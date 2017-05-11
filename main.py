@@ -7,6 +7,8 @@ class BangazonUser():
   """ This class is the interface to the BangazonCLI
         Methods:
             main_menu
+
+        Author: Justin Short
   """
 
   def __init__(self):
