@@ -11,6 +11,11 @@ class TestCustomerMethods(unittest.TestCase):
         customer_id = get_customer_id()
         self.assertIsNotNone(customer_id)
 
+    def test_get_all_customers(self):
+
+        display_customers = get_all_customers()
+
+
 
     def test_activate_customer(self):
 
