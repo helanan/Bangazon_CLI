@@ -7,4 +7,4 @@ bin
 obj
 *.sqlite3
 */migrations/
-
+*.db

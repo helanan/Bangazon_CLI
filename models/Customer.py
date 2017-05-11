@@ -3,14 +3,14 @@ import sqlite3
 from datetime import datetime
 from time import time
 
-def activate_customer():
-    return 1
+
+# This method's purpose will not be needed once the CLI is working. The user will input the which customer they are selecting and it will be set to customer_id
 
 def get_customer_id():
     return 1
 
 
-def create_customer(name, address, city, c_state, zipcode, phone, active=False):
+def create_customer(name, address, city, c_state, zipcode, phone):
     ''' Allows the user to add a customer to the database
 
         Method Arguments:
@@ -34,9 +34,32 @@ def create_customer(name, address, city, c_state, zipcode, phone, active=False):
         zipcode = zipcode
         phone = phone
 
-        c.execute("""INSERT INTO Customers values (?, ?, ?, ?, ?, ?, ?, ?)""", (None ,name, address, city, c_state, zipcode, phone, active))
+        c.execute("""INSERT INTO Customers values (?, ?, ?, ?, ?, ?, ?, ?)""", (None ,name, address, city, c_state, zipcode, phone))
 
         conn.commit()
+
+def get_all_customers():
+
+    ''' This method will retrieve all customers that are stored in the Customers table of bangazonData.db
+    '''
+
+    with sqlite3.connect('bangazonData.db') as conn:
+
+        c = conn.cursor()
+
+        c.execute("""SELECT * FROM Customers """)
+
+
+        display_customers = c.fetchall()
+
+        print(display_customers)
+
+        try:
+            return display_customers
+        except:
+            return None
+
+
 
 def activate_customer(customer_id):
 
