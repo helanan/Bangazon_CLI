@@ -1,10 +1,9 @@
 import unittest
 import sys
 sys.path.append('../models')
-from Order import *
-from Customer import *
-from payment_types import *
-# from models.Products import *
+from models.Order import *
+from models.Customer import *
+from models.payment_types import *
 
 class TestOrderMethods(unittest.TestCase):
 
@@ -27,7 +26,8 @@ class TestOrderMethods(unittest.TestCase):
         'customer_id' : 3}
 
         self.payment_type = {
-        'payment_type':'Amax',
+        'account_number':'1234567890',
+        'account_name': 'Amex',
         'payment_id':1 }
 
     def test_product_is_added_to_shopping_cart(self):
@@ -46,35 +46,33 @@ class TestOrderMethods(unittest.TestCase):
 
     
     def test_customer_order_total(self):
-        create_customer(self.customer)
-        customer_id = get_customer_id
+
+        customer_id = get_customer_id()
         active_customer = activate_customer(customer_id)
         product_id = get_product_id(self.product)
         self.assertIsNotNone(product_id)
     
     def test_order_has_payment_type(self):
-        create_customer(self.customer)
-        customer_id = get_customer_id
+
+        customer_id = get_customer_id()
         active_customer = activate_customer(customer_id)
         self.assertIsNotNone(active_customer)
-        create_payment_type(self.payment_type)
-        payment_type = get_payment_type(self.payment_type)
-        self.assertIsNotNone(payment_type)
+        active_customer = get_customer_payment_type(customer_id)
+        self.assertIsNotNone(customer_id)
 
 
     def test_order_is_complete(self):
-        create_customer(self.customer)
-        customer_id = get_customer_id
+ 
+        customer_id = get_customer_id()
         active_customer = activate_customer(customer_id)
         self.assertIsNotNone(active_customer)
         # create an order- adds it to our database
         create_order(self.order)
         # adds payment type to our database
-        create_payment_type(self.payment_type)
+        account_number = get_customer_payment_type(customer_id)
         # retrieves our orderid from order we made
         order_id = get_order_id(self.order)
         payment_id = get_payment_type_id(self.payment_type)
-
         # attach a payment type to order
         add_payment_to_order(payment_id, order_id)
         # adds payment to or order using the order id
